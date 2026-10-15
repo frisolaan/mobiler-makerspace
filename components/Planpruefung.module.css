@@ -1,0 +1,71 @@
+.buehne { display: grid; gap: 0.9rem; }
+@media (min-width: 1040px) { .buehne { grid-template-columns: 1.7fr 1fr; align-items: start; } }
+
+.planKarte { background: #fff; border-radius: 14px; padding: 1rem 0.9rem 1.1rem; min-width: 0; }
+.rollen { overflow-x: auto; padding-bottom: 0.5rem; }
+.rollen::-webkit-scrollbar { height: 7px; }
+.rollen::-webkit-scrollbar-thumb { background: #c9c8d6; border-radius: 99px; }
+
+.plan { border-collapse: separate; border-spacing: 0.3rem; min-width: 52rem; }
+
+.ecke { width: 8.2rem; min-width: 8.2rem; }
+.tag {
+  font-family: var(--display); font-weight: 700; font-size: 0.74rem; color: #7d7f9c;
+  text-align: right; padding-right: 0.5rem; white-space: nowrap; vertical-align: middle;
+  width: 8.2rem; min-width: 8.2rem;
+}
+.tag span { display: block; font-size: 0.68rem; font-weight: 400; color: #9a9cb0; }
+
+.kopf {
+  background: var(--navy); color: #fff; border-radius: 10px; padding: 0.55rem 0.7rem;
+  text-align: left; vertical-align: top; width: 11rem; border: 1.5px solid transparent;
+}
+.kopf b { font-family: var(--display); font-weight: 800; font-size: 0.92rem; display: block; line-height: 1.2; }
+.kopf small { font-size: 0.72rem; color: #a6a8cb; }
+.kopfKnopf { cursor: pointer; font: inherit; }
+.kopfKnopf:hover { border-color: var(--mint); }
+
+.zelle {
+  background: var(--grund); border-radius: 9px; padding: 0.5rem 0.6rem; font-size: 0.86rem;
+  line-height: 1.3; border: 1.5px solid transparent; width: 11rem; vertical-align: middle;
+}
+.tippbar { cursor: pointer; font: inherit; text-align: left; width: 100%; }
+.tippbar:hover { border-color: #9a9cb0; background: #efefea; }
+
+.getroffen { background: rgba(212, 42, 23, 0.14); border-color: var(--warn); font-weight: 700; }
+.danebenGetippt { background: rgba(63, 174, 134, 0.16); border-color: var(--gruen); }
+.aufgedeckt { background: rgba(212, 42, 23, 0.08); border-color: rgba(212, 42, 23, 0.5); border-style: dashed; }
+
+.befunde { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
+.befund {
+  border-left: 4px solid var(--warn); background: #fff; border-radius: 0 10px 10px 0;
+  padding: 0.75rem 0.95rem; font-size: 0.92rem; line-height: 1.5; color: #4a4d6b;
+}
+.befund b { font-family: var(--display); color: var(--navy); display: block; }
+.befund .wo { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8a8ca6; font-weight: 700; }
+.richtig { color: var(--gruen); font-weight: 700; }
+
+.pult { background: var(--navy); color: #fff; border-radius: 14px; padding: 1.1rem 1.15rem 1.2rem; }
+.pult h2 { font-family: var(--display); font-weight: 800; font-size: 1.1rem; margin: 0 0 0.5rem; }
+.pult p { font-size: 0.92rem; line-height: 1.5; color: #d2d3e6; }
+.kreise { display: flex; gap: 0.45rem; margin: 0.9rem 0 0.2rem; }
+.kreis {
+  width: 1.7rem; height: 1.7rem; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, 0.45);
+  display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 0.8rem;
+}
+.kreisVoll { background: var(--warn); border: 2px solid var(--warn); }
+.stand { font-size: 0.85rem; color: #a6a8cb; margin-top: 0.5rem; }
+.knoepfe { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.kl {
+  font-family: var(--display); font-weight: 800; font-size: 0.86rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.45); background: transparent; color: #fff;
+  border-radius: 999px; padding: 0.4rem 0.95rem; cursor: pointer;
+}
+.kl:hover { background: rgba(255, 255, 255, 0.14); }
+.kl[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+.fertig { background: var(--mint); color: var(--navy); border-radius: 12px; padding: 0.95rem 1.05rem; margin-top: 0.9rem; }
+.fertig h3 { font-family: var(--display); font-weight: 800; font-size: 1rem; margin: 0 0 0.35rem; }
+.fertig p { font-size: 0.92rem; line-height: 1.5; color: #27405a; }
+
+.wisch { font-size: 0.8rem; color: #8a8ca6; margin-top: 0.4rem; }

@@ -7,8 +7,11 @@ export default function Nav() {
         <Link className="mark" href="/">
           Mobiler <span>MakerSpace</span>
         </Link>
+        <Link className="lnk" href="/woche">
+          Die Woche
+        </Link>
         <Link className="lnk" href="/spiel">
-          Kettenreaktion spielen
+          Kettenreaktion
         </Link>
         <Link className="lnk" href="/kompetenzen">
           Kompetenzen

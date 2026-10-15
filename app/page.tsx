@@ -1,183 +1,240 @@
 import Link from 'next/link';
-import { CHALLENGES, SCHRITTE, BOXEN } from '@/lib/inhalte';
+import k from '@/components/Kartenblatt.module.css';
+
+const ABSCHNITTE = [
+  { nr: 'C', id: 'auftrag', titel: 'Der Auftrag' },
+  { nr: '1', id: 'vorgehen', titel: 'So gehen Sie vor' },
+  { nr: '2', id: 'bleibt', titel: 'Was bleibt' },
+  { nr: '3', id: 'fertig', titel: 'Fertig sind Sie, wenn' },
+  { nr: '4', id: 'einwaende', titel: 'Kommen Sie nicht weiter?' },
+  { nr: '5', id: 'weiter', titel: 'Wenn Sie Zeit haben' },
+];
 
 export default function Start() {
   return (
-    <>
-      <section className="band band-navy">
-        <div className="wrap stack">
-          <p className="eyebrow">Pädagogische Hochschule Thurgau</p>
-          <h1>
-            Sieben Halbtage.
-            <br />
-            Vier Kisten.
-            <br />
-            <span style={{ color: 'var(--mint)' }}>Keine Steckdose.</span>
-          </h1>
-          <p className="lead" style={{ color: '#dfe0ec', marginTop: '.6rem' }}>
-            Der Mobile MakerSpace bringt eine Making-Woche ins Klassenzimmer – als Materialset, das tageweise gemietet
-            wird. Die Lehrperson führt die Woche selbst durch. Es kommt niemand von aussen.
+    <div className={k.blatt}>
+      <div className="wrap">
+        {/* ---------- Kopf ---------- */}
+        <header className={k.kopf}>
+          <div className={k.kopfLinks}>
+            <div className="okt" style={{ width: '2.8rem', height: '2.8rem', fontSize: '1.15rem' }}>
+              C
+            </div>
+            <div style={{ minWidth: 0 }}>
+              <p className={k.marke}>Mobiler MakerSpace · Pädagogische Hochschule Thurgau</p>
+              <h1 className={k.titel}>Passt das an Ihre Schule?</h1>
+            </div>
+          </div>
+          <div className={k.kopfRechts}>
+            <span className={k.pille}>Eine Schulwoche</span>
+            <span className={k.zeile}>4.–6. Klasse · sieben Halbtage · Lesezeit 5 Min.</span>
+            <nav className={k.punkte} aria-label="Abschnitte dieser Seite">
+              {ABSCHNITTE.map((a, i) => (
+                <a
+                  key={a.id}
+                  href={`#${a.id}`}
+                  className={`${k.pkt} ${i === 0 ? k.pktAktiv : ''}`}
+                  title={a.titel}
+                >
+                  {a.nr}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </header>
+
+        {/* ---------- Was Sie brauchen ---------- */}
+        <section className={k.bedarf}>
+          <p className={k.bedarfText}>
+            <b>Was Sie brauchen</b>
+            Eine Klasse der 4.–6. Klasse · sieben Halbtage in einer Woche · eine Lehrperson, die moderiert ·
+            ein normales Schulzimmer mit Tischen
           </p>
-          <p style={{ marginTop: '1.2rem', display: 'flex', gap: '.7rem', flexWrap: 'wrap' }}>
-            <Link className="knopf" href="/spiel">
-              Kettenreaktion spielen
-            </Link>
-            <Link className="knopf rand" href="/making">
-              Was ist schulisches Making?
-            </Link>
+          <p className={k.warnung}>
+            <span className={k.warnZeichen} aria-hidden="true">
+              ▲
+            </span>
+            Kein Making-Vorwissen. Keine Werkstatt.
           </p>
-        </div>
-      </section>
+        </section>
 
-      <section className="band band-sand">
-        <div className="wrap stack-l">
-          <div className="stack">
-            <p className="eyebrow">Worum es geht</p>
-            <h2>Drei Teile, die zusammenwirken</h2>
-            <p className="lead weich">
-              Das Boxensystem liefert das Material, die Challenge gibt der Woche eine Aufgabe, und die Karten führen
-              Klasse und Lehrperson durch die Tage. Am Ende der Mietdauer geht das Material vollständig zurück – was
-              bleibt, sind die Kompetenzen der Kinder und deren Belege.
+        {/* ---------- Auftrag ---------- */}
+        <section className={k.auftrag} id="auftrag">
+          <p className={k.auftragLabel}>Ihr Auftrag jetzt</p>
+          <p className={k.auftragSatz}>Finden Sie heraus, ob eine Making-Woche an Ihre Schule passt.</p>
+          <p className={k.auftragUnter}>
+            Am Ende wissen Sie, welche der vier Challenges Sie wählen würden, was die Woche kostet und was nach
+            dem Freitag bei den Kindern bleibt. Es kommt niemand von aussen ins Schulzimmer – das ist die
+            Bedingung, unter der das Ganze gebaut ist.
+          </p>
+        </section>
+
+        {/* ---------- Drei Kacheln ---------- */}
+        <div className={`${k.raster} ${k.rasterOben}`}>
+          <section className={k.kachel} id="vorgehen">
+            <h2>So gehen Sie vor</h2>
+            <ol className={k.schritte}>
+              <li>
+                <span className={k.nr}>1</span>
+                <span>
+                  Wählen Sie unter den vier Challenges die, deren Problem Ihre Klasse interessiert: der{' '}
+                  <strong>Lernhelfer</strong>, die <strong>bewegliche Brücke</strong>, der <strong>Wächter</strong>{' '}
+                  oder die <strong>Kettenreaktion</strong>. Drei davon laufen in einer Klasse parallel, die
+                  Kettenreaktion braucht alle.
+                </span>
+              </li>
+              <li>
+                <span className={k.nr}>2</span>
+                <span>
+                  Legen Sie Ihren Stundenplan daneben. Sieben Halbtage genügen – das Kartenset hat acht Schritte,
+                  einer darf wegfallen oder zwei lassen sich zusammenlegen.
+                </span>
+              </li>
+              <li>
+                <span className={k.nr}>3</span>
+                <span>
+                  Prüfen Sie, was Ihre Schule schon hat: Scheren, Lineale, Schneidunterlagen, Papier und
+                  Zeichenmaterial. Mehr setzen wir nicht voraus, alles andere kommt in den Boxen.
+                </span>
+              </li>
+              <li>
+                <span className={k.nr}>4</span>
+                <span>
+                  Rechnen Sie mit vier Boxen zu je rund CHF 750 pro Materialsatz. Wer sie bezahlt und wie
+                  ausgeliehen wird, ist noch offen – genau darüber möchten wir mit Ihnen reden.
+                </span>
+              </li>
+              <li>
+                <span className={k.nr}>5</span>
+                <span>
+                  Melden Sie sich für eine Pilotwoche. Wir suchen Klassen, die das Material zum ersten Mal in die
+                  Hand nehmen.
+                </span>
+              </li>
+            </ol>
+          </section>
+
+          <div className={k.saeule}>
+          <section className={`${k.kachel} ${k.kachelMint}`} id="bleibt">
+            <div className={k.kachelKopf}>
+              <span className={k.symbol} aria-hidden="true">
+                ✎
+              </span>
+              <h2>Das bleibt bei den Kindern</h2>
+            </div>
+            <ul className={k.haken}>
+              <li>
+                Eine digitale Lerndokumentation: nach jedem Halbtag ein Eintrag, meist ein Foto und ein bis drei
+                Sätze.
+              </li>
+              <li>
+                Ein Kompetenznachweis pro Kind, nach den 24 Making-Kompetenzen von MakeComp4School.
+              </li>
+              <li>Am Freitag geht die Hardware zurück. Die Lernspur bleibt.</li>
+            </ul>
+            <p style={{ marginTop: '.8rem' }}>
+              <Link className={k.weiter} href="/kompetenzen">
+                → Die 24 Kompetenzen ansehen
+              </Link>
             </p>
+          </section>
+
+          <section className={`${k.kachel} ${k.kachelNavy}`} id="fertig">
+            <div className={k.kachelKopf}>
+              <span className={`${k.symbol} ${k.symbolHell}`} aria-hidden="true">
+                ✓
+              </span>
+              <h2>Fertig sind Sie, wenn</h2>
+            </div>
+            <ul className={k.haken}>
+              <li>Sie wissen, welche der vier Challenges zu Ihrer Klasse passt.</li>
+              <li>Sie sieben Halbtage im Stundenplan gefunden haben.</li>
+              <li>Sie sagen können, was die Woche kostet und wer sie bezahlt.</li>
+              <li>Sie wissen, was Sie Ihrem Kollegium am Montag darauf erzählen.</li>
+            </ul>
+          </section>
           </div>
-          <div className="grid g3">
-            <article className="karte">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '.6rem' }}>
-                <div className="okt">1</div>
-                <span className="eyebrow">Material</span>
-              </div>
-              <h3>Modulares Boxensystem</h3>
-              <p className="weich">
-                Grundlagenboxen für jede Ausleihe, Themenboxen je nach Challenge. Ein Einlagensystem hält Ordnung und
-                macht die Vollständigkeitskontrolle zur Sache der Kinder.
+        </div>
+
+        {/* ---------- Einwände + Weiter ---------- */}
+        <div className={`${k.raster} ${k.rasterUnten}`}>
+          <section className={k.kachel} id="einwaende">
+            <h2>Kommen Sie nicht weiter?</h2>
+
+            <div className={k.einwand}>
+              <p className={k.einwandFrage}>
+                <span className={k.nr}>1</span>
+                «Unsere Lehrpersonen können kein Making.»
               </p>
-            </article>
-            <article className="karte">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '.6rem' }}>
-                <div className="okt">2</div>
-                <span className="eyebrow">Aufgabe</span>
-              </div>
-              <h3>Challenge und Karten</h3>
-              <p className="weich">
-                Eine offene Problemstellung füllt die Woche. Pro Halbtag liegt eine Karte bereit – mit Auftrag,
-                Vorgehen, Fertig-Kriterium und dreistufiger Hilfe.
+              <p className={k.einwandAntwort}>
+                Dafür ist das Material gebaut. Auf jeder Karte stehen der Auftrag, das Vorgehen in vier bis fünf
+                Schritten, ein Fertig-Kriterium, das die Kinder selbst prüfen können, und eine dreistufige Hilfe.
+                Die Lehrperson moderiert, sie unterrichtet nicht. Eine halbtägige Weiterbildung vor dem Einsatz
+                gehört dazu.
               </p>
-            </article>
-            <article className="karte">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '.6rem' }}>
-                <div className="okt">3</div>
-                <span className="eyebrow">Nachweis</span>
-              </div>
-              <h3>Lernspur statt Werkstück</h3>
-              <p className="weich">
-                Fotos, Skizzen, Messwerte und Reflexionen landen in einer digitalen Lerndokumentation. Daraus entsteht
-                pro Kind ein Kompetenznachweis.
+            </div>
+
+            <div className={k.einwand}>
+              <p className={k.einwandFrage}>
+                <span className={k.nr}>2</span>
+                «Wir haben keinen Raum dafür.»
               </p>
-            </article>
-          </div>
-        </div>
-      </section>
+              <p className={k.einwandAntwort}>
+                Es braucht keinen. Das Material kommt in vier Boxen ins normale Schulzimmer, und ein
+                Einlagensystem hält sie in Ordnung – die Vollständigkeitskontrolle wird damit zur Aufgabe der
+                Kinder statt zur Arbeit der Lehrperson.
+              </p>
+            </div>
 
-      <section className="band band-weiss">
-        <div className="wrap stack-l">
-          <div className="stack">
-            <p className="eyebrow">Die Aufgaben</p>
-            <h2>Vier Challenges zur Auswahl</h2>
-            <p className="lead weich">
-              Alle mit demselben Boxensystem durchführbar und gleich aufgebaut. Drei davon können in einer Klasse
-              parallel laufen – die Kettenreaktion braucht die ganze Klasse.
-            </p>
-          </div>
-          <div className="grid g2">
-            {CHALLENGES.map((c) => (
-              <article key={c.titel} className="karte">
-                <h3>{c.titel}</h3>
-                <p className="weich">{c.aufgabe}</p>
-                <p style={{ fontSize: '.9rem' }}>
-                  <strong>Schwerpunkt:</strong> {c.schwerpunkt}
-                </p>
-              </article>
-            ))}
-          </div>
-          <div
-            style={{
-              background: 'var(--navy)',
-              color: '#fff',
-              borderRadius: 16,
-              padding: '1.5rem 1.4rem',
-            }}
-          >
-            <p
-              style={{
-                fontFamily: 'var(--display)',
-                fontWeight: 800,
-                fontSize: 'clamp(1.15rem,3.4vw,1.6rem)',
-                lineHeight: 1.25,
-              }}
-            >
-              «Sie funktioniert nur mit Energie, die ihr selbst erzeugt habt.»
-            </p>
-            <p style={{ color: '#b9bad6', marginTop: '.8rem', fontSize: '.9rem', lineHeight: 1.5 }}>
-              Die Bedingung, die in allen vier Challenges gilt. Solarzelle, Windrad, Handkurbel und Speicher statt
-              Steckdose – damit wird Energie zum Konstruktionsproblem statt zur Selbstverständlichkeit.
-            </p>
-          </div>
-        </div>
-      </section>
+            <div className={k.einwand}>
+              <p className={k.einwandFrage}>
+                <span className={k.nr}>3</span>
+                «Und wenn am Freitag nichts funktioniert?»
+              </p>
+              <p className={k.einwandAntwort}>
+                Dann ist die Woche trotzdem gelungen. Beurteilt wird nicht das Werkstück, sondern der Weg dorthin:
+                was beobachtet, entschieden, geändert und begründet wurde. Der Kompetenznachweis entsteht aus der
+                Lerndokumentation, nicht aus dem Prototyp. Eine Brücke, die zweimal von drei Versuchen öffnet,
+                liefert oft mehr Gesprächsstoff als eine, die auf Anhieb läuft.
+              </p>
+            </div>
+          </section>
 
-      <section className="band band-sand">
-        <div className="wrap stack-l">
-          <div className="stack">
-            <p className="eyebrow">Der Ablauf</p>
-            <h2>Acht Schritte, sieben Halbtage</h2>
-            <p className="lead weich">
-              Der Ablauf ist in allen Challenges derselbe. Eine Schulwoche bietet in der Regel sieben nutzbare
-              Halbtage, das Kartenset umfasst acht Schritte. Diese Differenz ist beabsichtigt: Ein Schritt kann
-              weggelassen, zwei können zusammengelegt werden.
+          <section className={`${k.kachel} ${k.kachelLavendel}`} id="weiter">
+            <h2>Wenn Sie Zeit haben</h2>
+            <p style={{ fontSize: '.95rem', lineHeight: 1.5 }}>
+              Die Woche ist in allen vier Challenges gleich gebaut. Wie sie sich anfühlt, steht Halbtag für
+              Halbtag auf der nächsten Seite – mitsamt dem, was die Lehrperson dabei ausdrücklich nicht tut.
             </p>
-          </div>
-          <div className="grid g4">
-            {SCHRITTE.map((x) => (
-              <div key={x.nr} className="karte" style={{ flexDirection: 'row', gap: '.7rem', alignItems: 'flex-start' }}>
-                <div className={x.nr === 8 ? 'okt gruen' : 'okt'} style={{ width: '1.8rem', height: '1.8rem', fontSize: '.82rem' }}>
-                  {x.nr}
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '.98rem' }}>{x.name}</h3>
-                  <p className="weich" style={{ fontSize: '.85rem', lineHeight: 1.35 }}>
-                    {x.was}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+            <Link className={k.weiter} href="/woche">
+              → Die Woche, Halbtag für Halbtag
+            </Link>
+            <span className={k.weiterZusatz}>
+              Oder probieren Sie die vierte Challenge selbst aus: In der{' '}
+              <Link href="/spiel" style={{ fontWeight: 700 }}>
+                Kettenreaktion
+              </Link>{' '}
+              muss jede Station den Anstoss an die nächste Gruppe weitergeben.
+            </span>
+          </section>
         </div>
-      </section>
 
-      <section className="band band-weiss">
-        <div className="wrap stack-l">
-          <div className="stack">
-            <p className="eyebrow">Das Material</p>
-            <h2>Vier Boxen</h2>
-          </div>
-          <div className="grid g4">
-            {BOXEN.map((b) => (
-              <article key={b.name} className="karte">
-                <span className="eyebrow">{b.art}</span>
-                <h3>{b.name}</h3>
-                <p className="weich" style={{ fontSize: '.88rem' }}>
-                  {b.inhalt}
-                </p>
-              </article>
-            ))}
-          </div>
+        {/* ---------- Offen geblieben ---------- */}
+        <section className={k.offen}>
+          <b>Offen geblieben</b>
           <p>
-            <Link className="knopf" href="/spiel">
-              Jetzt eine Kettenreaktion bauen
-            </Link>
+            Das Betriebs- und Finanzierungsmodell ist nicht entschieden – Miete, Trägerschaft und Betreuung stehen
+            zur Diskussion. Ob Lasercutter, Tiefziehgerät und Lötstation zum Mietmaterial gehören, entscheidet
+            sich nach der ersten Testklasse. Eine solche Klasse gibt es noch nicht: Was hier steht, beschreibt,
+            wie das Material gebaut ist, und ist kein Erfahrungsbericht.
           </p>
-        </div>
-      </section>
-    </>
+        </section>
+
+        <p className={k.kartenfuss}>
+          <span>I+D Campus × PHTG · Mobiler MakerSpace · Projektkarte</span>
+          <span>CC BY-SA 4.0 · Prototyp · Oktober 2026</span>
+        </p>
+      </div>
+    </div>
   );
 }

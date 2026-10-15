@@ -136,3 +136,9 @@ footer.fuss strong { color: #fff; font-family: var(--display); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+@media (max-width: 560px) {
+  .nav .wrap { gap: 0.55rem 0.9rem; padding-block: 0.65rem; }
+  .nav .mark { flex: 1 0 100%; margin-right: 0; }
+  .nav a.lnk { font-size: 0.82rem; }
+}

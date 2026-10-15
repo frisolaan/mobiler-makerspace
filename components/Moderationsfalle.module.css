@@ -1,0 +1,86 @@
+.buehne { display: grid; gap: 0.9rem; }
+@media (min-width: 940px) { .buehne { grid-template-columns: 1.55fr 1fr; align-items: start; } }
+
+.szene { background: #fff; border-radius: 14px; padding: 1.1rem 0.9rem 1.2rem; min-width: 0; }
+.lage {
+  font-size: 0.92rem; line-height: 1.5; color: #4a4d6b;
+  background: var(--grund); border-radius: 10px; padding: 0.8rem 0.95rem; margin: 0 0.3rem 0.9rem;
+}
+
+.zeilen { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.zeile { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.5rem 0.6rem; border-radius: 10px; min-width: 0; }
+.wer {
+  flex: 0 0 5.6rem; font-family: var(--display); font-weight: 700; font-size: 0.78rem;
+  color: #7d7f9c; padding-top: 0.15rem; text-align: right;
+}
+.werLp { color: var(--navy); }
+.satz { font-size: 0.97rem; line-height: 1.45; min-width: 0; }
+
+.kind { opacity: 0.85; }
+
+.tippbar {
+  background: transparent; border: 1.5px solid transparent; cursor: pointer;
+  font: inherit; text-align: left; width: 100%;
+}
+.tippbar:hover { border-color: #b9bbd4; background: #fbfbfa; }
+
+.getroffen { background: rgba(212, 42, 23, 0.1); border-color: var(--warn); }
+.getroffen .satz { text-decoration: line-through; text-decoration-color: rgba(212, 42, 23, 0.55); }
+.danebenGetippt { background: rgba(63, 174, 134, 0.12); border-color: var(--gruen); }
+.aufgedeckt { background: rgba(212, 42, 23, 0.07); border-color: rgba(212, 42, 23, 0.45); border-style: dashed; }
+
+.marker {
+  flex: 0 0 auto; width: 1.3rem; height: 1.3rem; border-radius: 50%; display: grid; place-items: center;
+  font-size: 0.78rem; font-weight: 800; color: #fff; margin-top: 0.1rem;
+}
+.markerFalle { background: var(--warn); }
+.markerOk { background: var(--gruen); }
+
+.hinweis {
+  margin: 0.25rem 0 0.5rem 6.35rem; font-size: 0.89rem; line-height: 1.5;
+  border-left: 3px solid var(--linie); padding-left: 0.8rem; color: #4a4d6b;
+}
+.hinweis b { font-family: var(--display); color: var(--navy); display: block; }
+.besser { color: var(--gruen); font-weight: 700; }
+
+/* ---- Seitenspalte ---- */
+.pult { background: var(--navy); color: #fff; border-radius: 14px; padding: 1.1rem 1.15rem 1.2rem; }
+.pult h2 { font-family: var(--display); font-weight: 800; font-size: 1.1rem; margin: 0 0 0.5rem; }
+.pult p { font-size: 0.92rem; line-height: 1.5; color: #d2d3e6; }
+
+.kreise { display: flex; gap: 0.45rem; margin: 0.9rem 0 0.2rem; }
+.kreis {
+  width: 1.7rem; height: 1.7rem; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, 0.45);
+  display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 0.8rem;
+}
+.kreisVoll { background: var(--warn); border: 2px solid var(--warn); }
+
+.stand { font-size: 0.85rem; color: #a6a8cb; margin-top: 0.5rem; }
+.knoepfe { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.kl {
+  font-family: var(--display); font-weight: 800; font-size: 0.86rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.45); background: transparent; color: #fff;
+  border-radius: 999px; padding: 0.4rem 0.95rem; cursor: pointer;
+}
+.kl:hover { background: rgba(255, 255, 255, 0.14); }
+.kl[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+.fertig { background: var(--mint); color: var(--navy); border-radius: 12px; padding: 0.95rem 1.05rem; margin-top: 0.9rem; }
+.fertig h3 { font-family: var(--display); font-weight: 800; font-size: 1rem; margin: 0 0 0.35rem; }
+.fertig p { font-size: 0.92rem; line-height: 1.5; color: #27405a; }
+
+.muster {
+  background: #fff; border-left: 5px solid var(--gruen); border-radius: 0 12px 12px 0;
+  padding: 0.95rem 1.15rem; margin-top: 0.9rem;
+}
+.muster b {
+  font-family: var(--display); font-size: 0.7rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--gruen); display: block; margin-bottom: 0.3rem;
+}
+.muster p { font-size: 0.93rem; line-height: 1.5; color: #4a4d6b; }
+
+@media (max-width: 560px) {
+  .wer { flex-basis: 4.4rem; font-size: 0.72rem; }
+  .hinweis { margin-left: 1rem; }
+}

@@ -1,0 +1,22 @@
+import Link from 'next/link';
+
+export default function Nav() {
+  return (
+    <nav className="nav">
+      <div className="wrap">
+        <Link className="mark" href="/">
+          Mobiler <span>MakerSpace</span>
+        </Link>
+        <Link className="lnk" href="/spiel">
+          Kettenreaktion spielen
+        </Link>
+        <Link className="lnk" href="/kompetenzen">
+          Kompetenzen
+        </Link>
+        <Link className="lnk" href="/making">
+          Schulisches Making
+        </Link>
+      </div>
+    </nav>
+  );
+}

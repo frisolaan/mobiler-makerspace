@@ -1,0 +1,125 @@
+.buehne {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 18px;
+  padding: 1.4rem 1.2rem 1.6rem;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.14) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.kopf { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-end; justify-content: space-between; }
+.ziel { font-family: var(--display); font-weight: 800; font-size: 1.15rem; line-height: 1.25; max-width: 24em; }
+.zielUnter { font-size: 0.88rem; color: #bfc1dc; margin-top: 0.25rem; max-width: 40em; line-height: 1.45; }
+
+.stufen { display: flex; gap: 0.4rem; }
+.stufeKnopf {
+  font-family: var(--display); font-weight: 700; font-size: 0.82rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.38); background: transparent; color: #fff;
+  border-radius: 999px; padding: 0.35rem 0.9rem; cursor: pointer; white-space: nowrap;
+}
+.stufeKnopf[aria-pressed='true'] { background: #fff; color: var(--navy); border-color: #fff; }
+
+/* ---- Kette ---- */
+.bahn {
+  display: flex; align-items: stretch; gap: 0.35rem;
+  margin-top: 1.2rem; overflow-x: auto; padding-bottom: 0.6rem;
+}
+.bahn::-webkit-scrollbar { height: 7px; }
+.bahn::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.28); border-radius: 99px; }
+
+.pol {
+  flex: 0 0 auto; width: 5.4rem; border-radius: 12px;
+  background: rgba(255, 255, 255, 0.09); border: 1.5px dashed rgba(255, 255, 255, 0.3);
+  padding: 0.6rem 0.5rem; display: flex; flex-direction: column; gap: 0.3rem;
+  align-items: center; justify-content: center; text-align: center;
+}
+.polLabel { font-family: var(--display); font-weight: 800; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #a6a8cb; }
+
+.slot {
+  flex: 0 0 auto; width: 9.4rem; min-height: 7.6rem;
+  border-radius: 12px; border: 1.5px solid rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.07); color: #fff;
+  padding: 0.6rem 0.65rem; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 0.35rem; font: inherit;
+}
+.slot:hover { border-color: var(--mint); }
+.slotAktiv { border-color: var(--mint); background: rgba(191, 227, 207, 0.18); box-shadow: 0 0 0 3px rgba(191, 227, 207, 0.3); }
+.slotPuls { background: rgba(239, 165, 43, 0.3); border-color: #efa52b; }
+.slotBruch { background: rgba(212, 42, 23, 0.32); border-color: var(--warn); }
+.slotNr { font-family: var(--display); font-weight: 800; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #a6a8cb; }
+.slotName { font-family: var(--display); font-weight: 800; font-size: 1rem; line-height: 1.15; }
+.slotLeer { color: #9a9cc2; font-size: 0.85rem; line-height: 1.3; margin-top: auto; }
+.weg { display: flex; align-items: center; gap: 0.3rem; flex-wrap: wrap; margin-top: auto; }
+
+.pfeil {
+  flex: 0 0 auto; align-self: center; width: 1.5rem; display: grid; place-items: center;
+  font-size: 1.1rem; color: #7d80ad;
+}
+.pfeilOk { color: var(--mint); }
+.pfeilBruch { color: var(--warn); font-weight: 800; }
+
+/* ---- Wirkungs-Chip ---- */
+.chip {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-family: var(--display); font-weight: 700; font-size: 0.72rem;
+  border-radius: 999px; padding: 0.15rem 0.5rem 0.15rem 0.3rem;
+  background: rgba(255, 255, 255, 0.14); color: #fff; white-space: nowrap;
+}
+.punkt { width: 0.6rem; height: 0.6rem; border-radius: 50%; flex: 0 0 auto; }
+
+/* ---- Werkbank ---- */
+.werkbank { margin-top: 1.6rem; }
+.werkTitel {
+  font-family: var(--display); font-weight: 800; font-size: 0.74rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #a6a8cb; margin-bottom: 0.6rem;
+}
+.teile { display: grid; grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); gap: 0.5rem; }
+.teil {
+  background: rgba(255, 255, 255, 0.09); border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 11px; padding: 0.55rem 0.65rem; cursor: pointer; text-align: left;
+  color: #fff; font: inherit; display: flex; flex-direction: column; gap: 0.3rem; min-width: 0;
+}
+.teil:hover { border-color: var(--mint); background: rgba(191, 227, 207, 0.16); }
+.teil[disabled] { opacity: 0.35; cursor: not-allowed; }
+.teilName { font-family: var(--display); font-weight: 800; font-size: 0.93rem; }
+.teilBox { font-size: 0.68rem; color: #9a9cc2; }
+
+/* ---- Leiste / Ergebnis ---- */
+.leiste { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 1.4rem; }
+.meldung { font-size: 0.92rem; line-height: 1.45; flex: 1 1 16rem; min-width: 0; }
+.meldungFehler { color: #ffb3a7; }
+.meldungOk { color: var(--mint); font-weight: 700; }
+
+.ergebnis {
+  margin-top: 1.2rem; border-radius: 14px; padding: 1.1rem 1.15rem;
+  background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.22);
+}
+.ergebnis h3 { font-size: 1.2rem; }
+.abzeichen { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+.plakette {
+  display: flex; gap: 0.5rem; align-items: center;
+  background: rgba(191, 227, 207, 0.2); border: 1.5px solid var(--mint);
+  border-radius: 11px; padding: 0.45rem 0.75rem; font-size: 0.85rem; line-height: 1.3; max-width: 22rem;
+}
+.plakette b { font-family: var(--display); display: block; font-size: 0.92rem; }
+
+/* ---- Sammlung ---- */
+.sammlung { margin-top: 1.6rem; }
+.sammelRaster { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.sammelStueck {
+  font-family: var(--display); font-weight: 700; font-size: 0.76rem;
+  border-radius: 999px; padding: 0.25rem 0.7rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.22); color: #8e90b8;
+}
+.sammelOffen { border-color: var(--mint); color: #fff; background: rgba(191, 227, 207, 0.18); }
+
+.erklaerBox {
+  margin-top: 1rem; background: rgba(255, 255, 255, 0.1); border-left: 4px solid var(--mint);
+  border-radius: 0 10px 10px 0; padding: 0.8rem 1rem; font-size: 0.9rem; line-height: 1.5;
+}
+.erklaerBox b { font-family: var(--display); }
+
+@media (max-width: 560px) {
+  .slot { width: 8.4rem; }
+  .pol { width: 4.6rem; }
+}

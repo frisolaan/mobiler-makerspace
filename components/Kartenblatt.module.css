@@ -255,3 +255,33 @@
 }
 .quest b { font-family: var(--display); font-weight: 800; font-size: 1.05rem; line-height: 1.2; }
 .quest p { font-size: 0.88rem; line-height: 1.45; color: #c6c8de; }
+
+/* ---- Unterschiede-Band ganz oben ---- */
+.unterschiede {
+  background: #fff; border-radius: 14px; padding: 1.5rem 1.2rem 1.2rem; margin-top: 1rem;
+  border: 2px solid var(--navy);
+}
+.unterschiedeKopf { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; align-items: baseline; }
+.unterschiedeKopf h2 {
+  font-family: var(--display); font-weight: 800; font-size: clamp(1.2rem, 3.2vw, 1.65rem);
+  line-height: 1.2; letter-spacing: -0.01em;
+}
+.unterschiedeKopf p { font-size: 0.95rem; color: var(--fg-weich); line-height: 1.45; }
+
+.plus { display: grid; gap: 0.6rem; margin-top: 1rem; }
+@media (min-width: 560px) { .plus { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .plus { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1180px) { .plus { grid-template-columns: repeat(5, 1fr); } }
+
+.plusKachel {
+  background: var(--grund); border-radius: 11px; padding: 0.75rem 0.85rem 0.85rem;
+  border-top: 5px solid currentColor; display: flex; flex-direction: column; gap: 0.3rem; min-width: 0;
+}
+.plusGegen {
+  font-family: var(--display); font-weight: 800; font-size: 0.68rem;
+  letter-spacing: 0.11em; text-transform: uppercase;
+}
+.plusTitel {
+  font-family: var(--display); font-weight: 800; font-size: 1rem; line-height: 1.2; color: var(--navy);
+}
+.plusText { font-size: 0.87rem; line-height: 1.4; color: #4a4d6b; }

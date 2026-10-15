@@ -46,7 +46,66 @@ export default function Start() {
           </div>
         </header>
 
-        {/* ---------- 2 Vertrauen ---------- */}
+        {/* ---------- 2 Was Making ausmacht ---------- */}
+        <div className={k.stoererZone} style={{ marginTop: '1.1rem' }}>
+          <span className={k.stoererMarke} style={{ background: '#EFA52B', color: 'var(--navy)' }}>
+            Die Pluspunkte
+          </span>
+          <section className={k.unterschiede}>
+            <div className={k.unterschiedeKopf}>
+              <h2>Fünf Pluspunkte von schulischem Making</h2>
+              <p>Das steckt hinter dem Begriff – und das bleibt, wenn die Kisten wieder weg sind.</p>
+            </div>
+            <div className={k.plus}>
+              <div className={k.plusKachel} style={{ color: '#EFA52B' }}>
+                <span className={k.plusGegen}>Die Aufgabe</span>
+                <span className={k.plusTitel}>Eigene Ideen umsetzen</span>
+                <span className={k.plusText}>
+                  Die Aufgabe ist offen. Was gebaut wird, entscheidet die Gruppe – an einem Problem, das sie
+                  selbst beobachtet hat.
+                </span>
+              </div>
+              <div className={k.plusKachel} style={{ color: 'var(--gruen)' }}>
+                <span className={k.plusGegen}>Die Beurteilung</span>
+                <span className={k.plusTitel}>Prozess vor Produkt</span>
+                <span className={k.plusText}>
+                  Beurteilt wird der Weg: was beobachtet, entschieden, geändert und begründet wurde.
+                </span>
+              </div>
+              <div className={k.plusKachel} style={{ color: '#6F63B8' }}>
+                <span className={k.plusGegen}>Die Rolle</span>
+                <span className={k.plusTitel}>Lehrperson begleitet</span>
+                <span className={k.plusText}>
+                  Sie moderiert und begleitet. Making-Vorwissen braucht sie dafür keines.
+                </span>
+              </div>
+              <div className={k.plusKachel} style={{ color: 'var(--warn)' }}>
+                <span className={k.plusGegen}>Die Wirkung</span>
+                <span className={k.plusTitel}>Selbstwirksamkeit</span>
+                <span className={k.plusText}>
+                  Am Ende weiss ein Kind: Das habe ich zum Laufen gebracht. Und es kann zeigen, wie.
+                </span>
+              </div>
+              <div className={k.plusKachel} style={{ color: 'var(--navy)' }}>
+                <span className={k.plusGegen}>Der Ertrag</span>
+                <span className={k.plusTitel}>Belegte Kompetenzen</span>
+                <span className={k.plusText}>
+                  Jeder Halbtag hinterlässt einen Eintrag. Am Freitag steht pro Kind ein Nachweis.
+                </span>
+              </div>
+            </div>
+            <p style={{ marginTop: '.9rem', display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+              <Link className={k.weiter} href="/making">
+                → Was schulisches Making ist
+              </Link>
+              <Link className={k.weiter} href="/lernspur">
+                → Wie die Lernspur entsteht
+              </Link>
+            </p>
+          </section>
+        </div>
+
+        {/* ---------- 3 Vertrauen ---------- */}
         <div className={k.belege}>
           <div className={k.beleg}>
             <b>Herkunft</b>
@@ -91,29 +150,6 @@ export default function Start() {
         </section>
 
         <div className={`${k.raster} ${k.rasterOben}`}>
-          <section className={k.kachel}>
-            <h2>Warum das etwas bringt</h2>
-            <ul className={k.haken}>
-              <li>
-                Die Kinder arbeiten eine Woche lang an einem Problem, das sie selbst beobachtet haben – nicht an
-                einer Aufgabe aus einem Heft.
-              </li>
-              <li>
-                Beurteilt wird der Weg, nicht das Werkstück. Eine Brücke, die zweimal von drei Versuchen öffnet,
-                liefert mehr Gesprächsstoff als eine, die auf Anhieb läuft.
-              </li>
-              <li>
-                Überfachliche Kompetenzen werden belegbar statt behauptet: Jeder Halbtag hinterlässt einen
-                Eintrag, am Freitag steht pro Kind ein Nachweis.
-              </li>
-              <li>
-                Die Lehrperson führt die Woche selbst durch und kann sie im Jahr darauf wiederholen. Das Können
-                bleibt an der Schule.
-              </li>
-            </ul>
-          </section>
-
-          <div className={k.saeule}>
             <section className={`${k.kachel} ${k.kachelMint}`}>
               <div className={k.kachelKopf}>
                 <span className={k.symbol} aria-hidden="true">
@@ -153,7 +189,6 @@ export default function Start() {
                 zum Konstruktionsproblem statt zur Selbstverständlichkeit.
               </p>
             </section>
-          </div>
         </div>
 
         {/* ---------- 4 Störer: schulisches Making ---------- */}

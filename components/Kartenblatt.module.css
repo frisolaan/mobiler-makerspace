@@ -163,3 +163,95 @@
 .htTut::before { content: '✓'; color: var(--gruen); font-weight: 800; flex: 0 0 auto; }
 .htTutNicht::before { content: '✕'; color: var(--warn); font-weight: 800; flex: 0 0 auto; }
 .kette { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
+
+/* ---- Vertrauensband ---- */
+.belege { display: grid; gap: 0.6rem; margin-top: 1rem; }
+@media (min-width: 760px) { .belege { grid-template-columns: repeat(4, 1fr); } }
+.beleg { background: #fff; border-radius: 11px; padding: 0.8rem 0.9rem; min-width: 0; }
+.beleg b {
+  font-family: var(--display); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gruen); display: block; margin-bottom: 0.25rem;
+}
+.beleg p { font-size: 0.88rem; line-height: 1.45; color: #4a4d6b; }
+
+/* ---- Störer ---- */
+.stoererZone { position: relative; margin-top: 1.4rem; }
+.stoerer {
+  background: var(--navy); color: #fff; border-radius: 14px; padding: 1.5rem 1.4rem 1.4rem;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.16) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+.stoererMarke {
+  position: absolute; top: -0.9rem; left: 1.4rem; z-index: 2;
+  background: var(--warn); color: #fff; font-family: var(--display); font-weight: 800;
+  font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.4rem 0.9rem; border-radius: 999px; transform: rotate(-2deg);
+}
+.stoerer q {
+  font-family: var(--display); font-weight: 800; font-size: clamp(1.15rem, 3.4vw, 1.75rem);
+  line-height: 1.22; quotes: '«' '»'; display: block; text-wrap: balance;
+}
+.stoerer .quelle { font-size: 0.82rem; color: #b0b2d2; margin-top: 0.8rem; line-height: 1.45; }
+.stoerer a { color: var(--mint); font-family: var(--display); font-weight: 800; text-decoration: none; }
+.stoerer a:hover { color: #fff; }
+
+/* ---- Challenge-Aufklapper ---- */
+.challenges { display: grid; gap: 0.6rem; margin-top: 0.9rem; }
+@media (min-width: 820px) { .challenges { grid-template-columns: 1fr 1fr; align-items: start; } }
+.challenge { background: #fff; border-radius: 12px; overflow: hidden; min-width: 0; }
+.challenge > summary {
+  cursor: pointer; list-style: none; padding: 0.9rem 1rem;
+  display: flex; gap: 0.7rem; align-items: baseline; justify-content: space-between;
+}
+.challenge > summary::-webkit-details-marker { display: none; }
+.challenge > summary:hover { background: #fafaf8; }
+.challenge > summary b { font-family: var(--display); font-weight: 800; font-size: 1.08rem; }
+.challenge > summary span {
+  font-family: var(--display); font-weight: 700; font-size: 0.78rem; color: var(--gruen); white-space: nowrap;
+}
+.challenge[open] > summary span::after { content: ' ▴'; }
+.challenge:not([open]) > summary span::after { content: ' ▾'; }
+.chInhalt { padding: 0 1rem 1rem; display: grid; gap: 0.55rem; }
+.chInhalt p { font-size: 0.92rem; line-height: 1.5; color: #4a4d6b; }
+.chZeile { display: flex; gap: 0.5rem; font-size: 0.88rem; line-height: 1.45; }
+.chZeile b {
+  font-family: var(--display); font-weight: 700; color: var(--navy);
+  flex: 0 0 6.2rem; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem;
+}
+
+/* ---- Mini-Raster für die Methodik ---- */
+.mini { overflow-x: auto; margin-top: 0.9rem; }
+.miniTab { border-collapse: separate; border-spacing: 0.25rem; min-width: 34rem; font-size: 0.8rem; }
+.miniTab th {
+  background: var(--navy); color: #fff; border-radius: 8px; padding: 0.4rem 0.6rem;
+  font-family: var(--display); font-weight: 700; font-size: 0.78rem; text-align: left;
+}
+.miniTab td { background: var(--grund); border-radius: 8px; padding: 0.4rem 0.6rem; line-height: 1.3; }
+.miniTab .takt { background: var(--mint); font-weight: 700; }
+.miniTab .zeit {
+  background: transparent; font-family: var(--display); font-weight: 700; color: #7d7f9c;
+  font-size: 0.74rem; white-space: nowrap; text-align: right;
+}
+
+/* ---- Sidequest-Band ---- */
+.quests {
+  background: var(--navy); color: #fff; border-radius: 16px; padding: 1.4rem 1.3rem 1.5rem; margin-top: 1.4rem;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+.quests h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.25rem, 3.4vw, 1.75rem); }
+.quests > p { color: #d2d3e6; font-size: 1rem; line-height: 1.55; max-width: 46em; margin-top: 0.5rem; }
+.questListe { display: grid; gap: 0.6rem; margin-top: 1.1rem; }
+@media (min-width: 820px) { .questListe { grid-template-columns: repeat(3, 1fr); } }
+.quest {
+  background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.24);
+  border-radius: 12px; padding: 0.9rem 1rem; text-decoration: none; color: #fff;
+  display: flex; flex-direction: column; gap: 0.35rem; min-width: 0;
+}
+.quest:hover { border-color: var(--mint); background: rgba(191, 227, 207, 0.16); }
+.questFuer {
+  font-family: var(--display); font-weight: 700; font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mint);
+}
+.quest b { font-family: var(--display); font-weight: 800; font-size: 1.05rem; line-height: 1.2; }
+.quest p { font-size: 0.88rem; line-height: 1.45; color: #c6c8de; }

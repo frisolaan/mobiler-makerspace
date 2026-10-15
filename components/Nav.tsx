@@ -10,9 +10,6 @@ export default function Nav() {
         <Link className="lnk" href="/woche">
           Die Woche
         </Link>
-        <Link className="lnk" href="/spiel">
-          Kettenreaktion
-        </Link>
         <Link className="lnk" href="/kompetenzen">
           Kompetenzen
         </Link>

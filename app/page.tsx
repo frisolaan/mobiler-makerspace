@@ -127,9 +127,16 @@ export default function Start() {
                 <li>Am Freitag geht die Hardware zurück. Die Lernspur bleibt.</li>
               </ul>
               <p style={{ marginTop: '.6rem' }}>
-                <Link className={k.weiter} href="/kompetenzen">
-                  → Die 24 Kompetenzen
+                <Link className={k.weiter} href="/lernspur">
+                  → Wie die Lernspur entsteht
                 </Link>
+                <span className={k.weiterZusatz}>
+                  Oder gleich{' '}
+                  <Link href="/kompetenzen" style={{ fontWeight: 700 }}>
+                    die 24 Kompetenzen
+                  </Link>{' '}
+                  im Einzelnen.
+                </span>
               </p>
             </section>
 
@@ -332,6 +339,30 @@ export default function Start() {
             </p>
           </section>
         </div>
+
+        {/* ---------- Mieten und buchen ---------- */}
+        <section className={k.stoererZone} style={{ marginTop: '1.4rem' }}>
+          <span className={k.stoererMarke} style={{ background: 'var(--gruen)' }}>
+            Buchen
+          </span>
+          <div className={k.stoerer} style={{ background: 'var(--gruen)' }}>
+            <q style={{ quotes: 'none' }}>Boxen, Challenges und das ganze Setting lassen sich mieten.</q>
+            <p style={{ color: '#e8f6ef', marginTop: '.8rem', fontSize: '1rem', lineHeight: 1.55, maxWidth: '44em' }}>
+              Das Angebot läuft über den I+D Campus. Dort sind die Konditionen hinterlegt, und dort wird eine
+              Woche gebucht – für eine einzelne Klasse oder für eine ganze Projektwoche.
+            </p>
+            <p style={{ marginTop: '1rem' }}>
+              <a
+                href="https://id-campus.ch/lp-infoabend-mint-future-skills-plattform/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#fff', textDecoration: 'underline', textUnderlineOffset: '4px' }}
+              >
+                → Zur Plattform des I+D Campus
+              </a>
+            </p>
+          </div>
+        </section>
 
         {/* ---------- 8 Erst jetzt: Sidequests ---------- */}
         <section className={k.quests} id="ausprobieren">

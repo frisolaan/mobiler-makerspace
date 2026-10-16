@@ -8,7 +8,7 @@ export default function Nav() {
           Mobiler <span>MakerSpace</span>
         </Link>
         <Link className="lnk" href="/woche">
-          Die Woche
+          Die Lernschritte
         </Link>
         <Link className="lnk" href="/lernspur">
           Die Lernspur

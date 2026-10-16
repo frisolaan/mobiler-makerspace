@@ -93,7 +93,7 @@ export default function WochenplanSeite() {
             → Die Moderationsfalle
           </Link>
           <Link className={k.weiter} href="/woche">
-            → Die Woche
+            → Die Lernschritte
           </Link>
           <Link className={k.weiter} href="/">
             → Zur Projektkarte

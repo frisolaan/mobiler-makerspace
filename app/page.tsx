@@ -2,6 +2,21 @@ import Link from 'next/link';
 import k from '@/components/Kartenblatt.module.css';
 import { CHALLENGES } from '@/lib/inhalte';
 
+/** Adresse der Challenge Cards zum Ansehen. Leer lassen, solange sie nicht veröffentlicht sind. */
+const CHALLENGE_CARDS_URL = '';
+
+/** Acht Lernschritte – links der Schritt, rechts, was die Gruppe in der jeweiligen Aufgabe tut. */
+const SCHRITTE_KURZ: { nr: number; name: string; je: string[] }[] = [
+  { nr: 1, name: 'Erfahren', je: ['Stolperjagd', 'Kreuzungsjagd', 'Ereignisjagd', 'Anstoss suchen'] },
+  { nr: 2, name: 'Festlegen', je: ['Problem wählen', 'Hindernis wählen', 'Ereignis wählen', 'Station wählen'] },
+  { nr: 3, name: 'Entwerfen', je: ['Ideen schmieden', 'Ideen schmieden', 'Ideen schmieden', 'Ideen schmieden'] },
+  { nr: 4, name: 'Prüfen', je: ['Bauteile testen', 'Bauteile testen', 'Bauteile testen', 'Bauteile testen'] },
+  { nr: 5, name: 'Entscheiden', je: ['Skizze mit Massen', 'Skizze mit Massen', 'Wenn-Dann-Regel', 'Schnittstelle klären'] },
+  { nr: 6, name: 'Bauen', je: ['Erste Fassung', 'Erste Fassung', 'Erste Fassung', 'Erste Fassung'] },
+  { nr: 7, name: 'Testen', je: ['Eine Sache ändern', 'Eine Sache ändern', 'Eine Sache ändern', 'Übergabe testen'] },
+  { nr: 8, name: 'Zeigen', je: ['Vorführen', 'Vorführen', 'Vorführen', 'Ein Durchlauf'] },
+];
+
 const CH_DETAIL: Record<string, { bedingung: string; boxen: string; schluss: string }> = {
   'Der Lernhelfer': {
     bedingung: 'Das Problem muss selbst beobachtet sein – nicht ausgedacht und nicht von der Lehrperson gestellt.',
@@ -11,7 +26,7 @@ const CH_DETAIL: Record<string, { bedingung: string; boxen: string; schluss: str
   'Die bewegliche Brücke': {
     bedingung: 'Sie überspannt 40 cm, trägt geschlossen 200 g und gibt den Weg dreimal hintereinander frei.',
     boxen: 'Material-, Elektro- und Energiebox',
-    schluss: 'Vorgeführt wird unter denselben Bedingungen wie beim Test am Donnerstag – mit Zahlen von vorher und nachher.',
+    schluss: 'Vorgeführt wird unter denselben Bedingungen wie beim Test – mit Zahlen von vorher und nachher.',
   },
   'Der Wächter': {
     bedingung: 'Er meldet von selbst, ohne dass jemand einen Knopf drückt. Die Wenn-Dann-Regel steht vorher auf Papier.',
@@ -21,7 +36,7 @@ const CH_DETAIL: Record<string, { bedingung: string; boxen: string; schluss: str
   'Die Kettenreaktion': {
     bedingung: 'Jede Station nimmt den Anstoss der vorherigen an und gibt ihn weiter. Die Schnittstelle wird zwischen den Gruppen ausgehandelt.',
     boxen: 'Material-, Elektro- und Konstruktionsbox',
-    schluss: 'Ein Durchlauf durch alle Stationen. Diese Challenge braucht die ganze Klasse.',
+    schluss: 'Ein Durchlauf durch alle Stationen. Diese Aufgabe braucht die ganze Klasse.',
   },
 };
 
@@ -33,43 +48,90 @@ export default function Start() {
         <header className={k.kopf}>
           <div className={k.kopfLinks}>
             <div className="okt" style={{ width: '2.8rem', height: '2.8rem', fontSize: '1.15rem' }}>
-              C
+              M
             </div>
             <div style={{ minWidth: 0 }}>
-              <p className={k.marke}>Pädagogische Hochschule Thurgau · Projekt</p>
-              <h1 className={k.titel}>Eine Making-Woche, die ins Klassenzimmer kommt</h1>
+              <p className={k.marke}>I+D Campus × Pädagogische Hochschule Thurgau</p>
+              <h1 className={k.titel}>Mobiler MakerSpace</h1>
+              <p className={k.untertitel}>Eine Making-Woche, die ins Klassenzimmer kommt</p>
             </div>
           </div>
           <div className={k.kopfRechts}>
-            <span className={k.pille}>Mobiler MakerSpace</span>
-            <span className={k.zeile}>4.–6. Klasse · sieben Halbtage · Prototyp Oktober 2026</span>
+            <span className={k.pille}>Zur Miete</span>
+            <span className={k.zeile}>4.–6. Klasse · acht Lernschritte · Prototyp Oktober 2026</span>
           </div>
         </header>
 
-        {/* ---------- 2 Was Making ausmacht ---------- */}
-        <div className={k.stoererZone} style={{ marginTop: '1.1rem' }}>
+        {/* ---------- 2 Das Angebot: drei Standbeine ---------- */}
+        <section className={k.kachel} style={{ marginTop: '1rem' }}>
+          <h2>Ein Materialsortiment, das didaktisch begleitet an Schulen vermietet wird</h2>
+          <p className="weich" style={{ fontSize: '.97rem', lineHeight: 1.55, marginTop: '.45rem', maxWidth: '58em' }}>
+            Der Mobile MakerSpace ist eine Kooperation des <strong>I+D Campus</strong> mit der{' '}
+            <strong>Pädagogischen Hochschule Thurgau</strong>. Eine Schule mietet das Set für die Dauer ihres
+            Vorhabens; es kommt vollständig ins Schulzimmer und geht danach wieder zurück. Das Angebot steht auf
+            drei Standbeinen.
+          </p>
+          <div className={k.standbeine}>
+            <div className={k.standbein}>
+              <span className={k.standbeinNr}>1</span>
+              <span style={{ minWidth: 0 }}>
+                <b>Materialset</b>
+                <span>
+                  Werkzeug und Bauteile, thematisch in Boxen geordnet. Ein Einlagensystem hält sie vollständig und
+                  macht die Kontrolle zur Aufgabe der Kinder.
+                </span>
+              </span>
+            </div>
+            <div className={k.standbein}>
+              <span className={k.standbeinNr}>2</span>
+              <span style={{ minWidth: 0 }}>
+                <b>Didaktisches und methodisches Material</b>
+                <span>
+                  Vier ausgearbeitete Aufgaben mit didaktischem Kommentar für die Lehrperson und Challenge Cards,
+                  mit denen die Schüler:innen selbstständig arbeiten.
+                </span>
+              </span>
+            </div>
+            <div className={k.standbein}>
+              <span className={k.standbeinNr}>3</span>
+              <span style={{ minWidth: 0 }}>
+                <b>Kompetenzen sichtbar machen</b>
+                <span>
+                  Eine Anleitung, wie die geförderten überfachlichen Kompetenzen dokumentiert und pro Kind belegt
+                  werden – von der Lerndokumentation bis zum Nachweis.
+                </span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------- 3 Prinzipien des schulischen Making ---------- */}
+        <div className={k.stoererZone} style={{ marginTop: '1.3rem' }}>
           <span className={k.stoererMarke} style={{ background: '#EFA52B', color: 'var(--navy)' }}>
-            Die Pluspunkte
+            Educational Making
           </span>
           <section className={k.unterschiede}>
             <div className={k.unterschiedeKopf}>
-              <h2>Fünf Pluspunkte von schulischem Making</h2>
-              <p>Das steckt hinter dem Begriff – und das bleibt, wenn die Kisten wieder weg sind.</p>
+              <h2>Die Prinzipien des schulischen Making</h2>
+              <p>
+                Making folgt im Unterricht einigen wenigen Grundsätzen. Sie zielen auf überfachliche Kompetenzen –
+                und bestimmen, wie das Material gebaut ist.
+              </p>
             </div>
             <div className={k.plus}>
               <div className={k.plusKachel} style={{ color: '#EFA52B' }}>
                 <span className={k.plusGegen}>Die Aufgabe</span>
                 <span className={k.plusTitel}>Eigene Ideen umsetzen</span>
                 <span className={k.plusText}>
-                  Die Aufgabe ist offen. Was gebaut wird, entscheidet die Gruppe – an einem Problem, das sie
-                  selbst beobachtet hat.
+                  Die Aufgabe ist offen formuliert. Was gebaut wird, entscheidet die Gruppe – an einem Problem,
+                  das sie selbst beobachtet hat.
                 </span>
               </div>
               <div className={k.plusKachel} style={{ color: 'var(--gruen)' }}>
                 <span className={k.plusGegen}>Die Beurteilung</span>
                 <span className={k.plusTitel}>Prozess vor Produkt</span>
                 <span className={k.plusText}>
-                  Beurteilt wird der Weg: was beobachtet, entschieden, geändert und begründet wurde.
+                  Im Mittelpunkt steht der Weg: was beobachtet, entschieden, geändert und begründet wurde.
                 </span>
               </div>
               <div className={k.plusKachel} style={{ color: '#6F63B8' }}>
@@ -88,9 +150,9 @@ export default function Start() {
               </div>
               <div className={k.plusKachel} style={{ color: 'var(--navy)' }}>
                 <span className={k.plusGegen}>Der Ertrag</span>
-                <span className={k.plusTitel}>Belegte Kompetenzen</span>
+                <span className={k.plusTitel}>Überfachliche Kompetenzen</span>
                 <span className={k.plusText}>
-                  Jeder Halbtag hinterlässt einen Eintrag. Am Freitag steht pro Kind ein Nachweis.
+                  Gefördert werden Kompetenzen, die sich sonst schwer zeigen lassen – und hier belegbar werden.
                 </span>
               </div>
             </div>
@@ -105,15 +167,8 @@ export default function Start() {
           </section>
         </div>
 
-        {/* ---------- 3 Vertrauen ---------- */}
+        {/* ---------- 4 Einordnung ---------- */}
         <div className={k.belege}>
-          <div className={k.beleg}>
-            <b>Herkunft</b>
-            <p>
-              Die PHTG war mit der OST an der dreijährigen Making-Erprobung des Kantons Thurgau beteiligt und
-              hat parallel einen eigenen Ausbildungs-MakerSpace aufgebaut.
-            </p>
-          </div>
           <div className={k.beleg}>
             <b>Grundlage</b>
             <p>
@@ -122,10 +177,17 @@ export default function Start() {
             </p>
           </div>
           <div className={k.beleg}>
+            <b>Erfahrung</b>
+            <p>
+              Die PHTG war mit der OST an der dreijährigen Making-Erprobung des Kantons Thurgau beteiligt und hat
+              parallel einen eigenen Ausbildungs-MakerSpace aufgebaut.
+            </p>
+          </div>
+          <div className={k.beleg}>
             <b>Stand</b>
             <p>
-              Boxen, Kartenset und Kompetenznachweis liegen als Prototyp vor. Eine Testklasse hat die Woche noch
-              nicht durchlaufen.
+              Boxen, Kartenset und Kompetenznachweis liegen als Prototyp vor. Eine Testklasse hat die Lernschritte
+              noch nicht durchlaufen.
             </p>
           </div>
           <div className={k.beleg}>
@@ -137,61 +199,48 @@ export default function Start() {
           </div>
         </div>
 
-        {/* ---------- 3 Absicht ---------- */}
-        <section className={k.auftrag} id="absicht">
+        {/* ---------- 5 Der Mehrwert ---------- */}
+        <section className={k.auftrag} id="mehrwert">
           <p className={k.auftragLabel}>Worum es geht</p>
-          <p className={k.auftragSatz}>Making scheitert in der Primarschule selten am Willen.</p>
+          <p className={k.auftragSatz}>Making kennenlernen, ohne eine eigene Werkstatt aufzubauen.</p>
           <p className={k.auftragUnter}>
-            Es scheitert an dreierlei: Es gibt keinen Raum dafür, keine Zeit im Jahresplan und niemanden im
-            Kollegium, der sich zutraut, so eine Woche zu leiten. Der Mobile MakerSpace verschiebt diese drei
-            Hürden, statt sie der Schule zu überlassen – das Material kommt in Boxen, die Woche ist getaktet,
-            und die Karten tragen den Inhalt. Es kommt niemand von aussen ins Schulzimmer.
+            Eine Schule kann die Making-Methode im eigenen Unterricht erproben, bevor sie in Räume und Geräte
+            investiert: Das Material kommt in Boxen, die Lernschritte sind ausgearbeitet, und die Karten tragen
+            den Inhalt. Die Lehrperson führt selbst durch – und nimmt die Erfahrung mit, auch wenn das Material
+            wieder weg ist.
           </p>
         </section>
 
-        <div className={`${k.raster} ${k.rasterOben}`}>
-            <section className={`${k.kachel} ${k.kachelMint}`}>
-              <div className={k.kachelKopf}>
-                <span className={k.symbol} aria-hidden="true">
-                  ✎
-                </span>
-                <h2>Was bleibt</h2>
-              </div>
-              <ul className={k.haken}>
-                <li>Eine digitale Lerndokumentation: Fotos, Skizzen, Messwerte, Reflexionen.</li>
-                <li>Ein Kompetenznachweis pro Kind nach MakeComp4School.</li>
-                <li>Am Freitag geht die Hardware zurück. Die Lernspur bleibt.</li>
-              </ul>
-              <p style={{ marginTop: '.6rem' }}>
-                <Link className={k.weiter} href="/lernspur">
-                  → Wie die Lernspur entsteht
-                </Link>
-                <span className={k.weiterZusatz}>
-                  Oder gleich{' '}
-                  <Link href="/kompetenzen" style={{ fontWeight: 700 }}>
-                    die 24 Kompetenzen
-                  </Link>{' '}
-                  im Einzelnen.
-                </span>
-              </p>
-            </section>
+        <section className={`${k.kachel} ${k.kachelMint}`} style={{ marginTop: '.9rem' }}>
+          <div className={k.kachelKopf}>
+            <span className={k.symbol} aria-hidden="true">
+              ✎
+            </span>
+            <h2>Was bleibt</h2>
+          </div>
+          <ul className={k.haken}>
+            <li>
+              Eine digitale Lerndokumentation: nach jedem Lernschritt ein Eintrag, meist ein Foto und ein bis drei
+              Sätze.
+            </li>
+            <li>Ein Kompetenznachweis pro Kind, nach den 24 Making-Kompetenzen von MakeComp4School.</li>
+            <li>Die Erfahrung der Lehrperson, die das Ganze im Jahr darauf wiederholen kann.</li>
+          </ul>
+          <p style={{ marginTop: '.6rem' }}>
+            <Link className={k.weiter} href="/lernspur">
+              → Wie die Lernspur entsteht
+            </Link>
+            <span className={k.weiterZusatz}>
+              Oder gleich{' '}
+              <Link href="/kompetenzen" style={{ fontWeight: 700 }}>
+                die 24 Kompetenzen
+              </Link>{' '}
+              im Einzelnen.
+            </span>
+          </p>
+        </section>
 
-            <section className={`${k.kachel} ${k.kachelNavy}`}>
-              <div className={k.kachelKopf}>
-                <span className={`${k.symbol} ${k.symbolHell}`} aria-hidden="true">
-                  ▲
-                </span>
-                <h2>Die Bedingung</h2>
-              </div>
-              <p style={{ fontSize: '.95rem', lineHeight: 1.5 }}>
-                In allen vier Challenges gilt: <strong>Sie funktioniert nur mit Energie, die ihr selbst erzeugt
-                habt.</strong> Solarzelle, Windrad, Handkurbel und Speicher statt Steckdose. Damit wird Energie
-                zum Konstruktionsproblem statt zur Selbstverständlichkeit.
-              </p>
-            </section>
-        </div>
-
-        {/* ---------- 4 Störer: schulisches Making ---------- */}
+        {/* ---------- 6 Störer: schulisches Making ---------- */}
         <div className={k.stoererZone}>
           <span className={k.stoererMarke}>Woher das kommt</span>
           <section className={k.stoerer}>
@@ -206,12 +255,12 @@ export default function Start() {
           </section>
         </div>
 
-        {/* ---------- 5 Die Challenges ---------- */}
+        {/* ---------- 7 Die vier Aufgaben ---------- */}
         <section style={{ marginTop: '1.4rem' }}>
-          <h2 style={{ fontSize: 'clamp(1.3rem,3.6vw,1.9rem)' }}>Vier Challenges zur Auswahl</h2>
+          <h2 style={{ fontSize: 'clamp(1.3rem,3.6vw,1.9rem)' }}>Vier Aufgaben zur Auswahl</h2>
           <p className="lead weich" style={{ marginTop: '.4rem' }}>
-            Jede füllt eine Woche, jede ist als offene Problemstellung formuliert: einfacher Einstieg, nach oben
-            offen. Aufklappen zeigt Bedingung, Material und was am Freitag vorgeführt wird.
+            Jede ist als offene Problemstellung formuliert: einfacher Einstieg, nach oben offen. Aufklappen zeigt
+            Bedingung, Material und was am Schluss vorgeführt wird.
           </p>
           <div className={k.challenges}>
             {CHALLENGES.map((c) => {
@@ -237,7 +286,7 @@ export default function Start() {
                       <span>{d.boxen}</span>
                     </p>
                     <p className={k.chZeile}>
-                      <b>Am Freitag</b>
+                      <b>Am Schluss</b>
                       <span>{d.schluss}</span>
                     </p>
                   </div>
@@ -247,75 +296,68 @@ export default function Start() {
           </div>
         </section>
 
-        {/* ---------- 6 Methodik: Parallelität ---------- */}
+        {/* ---------- 8 Die Methodik ---------- */}
         <section className={k.kachel} style={{ marginTop: '1.4rem' }}>
-          <h2>Warum mehrere Challenges gleichzeitig laufen können</h2>
-          <p style={{ fontSize: '.97rem', lineHeight: 1.55, maxWidth: '56em', marginTop: '.5rem' }}>
-            Eine Klasse muss sich nicht auf eine Challenge einigen. Gruppen, die ein Lernproblem lösen wollen,
-            arbeiten neben Gruppen, die eine Brücke bewegen – im selben Zimmer, in derselben Woche, mit einer
-            Lehrperson. Möglich ist das, weil alle Kartensätze <strong>gleich getaktet</strong> sind: Am selben
-            Halbtag steht jede Gruppe beim selben Schritt, nur mit einem anderen Problem.
+          <h2>Ein Materialset, vier Aufgaben, eine Struktur</h2>
+          <p style={{ fontSize: '.97rem', lineHeight: 1.55, maxWidth: '58em', marginTop: '.5rem' }}>
+            Zu jeder Aufgabe gehören ein <strong>didaktischer Kommentar</strong> für die Lehrperson und{' '}
+            <strong>Challenge Cards</strong> für die Schüler:innen: Auf jeder Karte stehen der Auftrag, das
+            Vorgehen in vier bis fünf Schritten, ein Fertig-Kriterium, das die Gruppe selbst prüfen kann, und
+            eine dreistufige Hilfe. Damit arbeiten die Gruppen selbstständig.
+          </p>
+          <p style={{ fontSize: '.97rem', lineHeight: 1.55, maxWidth: '58em', marginTop: '.6rem' }}>
+            Alle vier Aufgaben folgen <strong>derselben Abfolge von acht Lernschritten</strong>. Eine Klasse muss
+            sich deshalb nicht auf eine Aufgabe einigen: Vier Gruppen können gleichzeitig an vier verschiedenen
+            Aufgaben arbeiten, und die Lehrperson begleitet trotzdem nur einen Schritt auf einmal.
           </p>
           <div className={k.mini}>
             <table className={k.miniTab}>
               <thead>
                 <tr>
                   <th scope="col" style={{ background: 'transparent' }}>
-                    <span className="eyebrow">Halbtag</span>
+                    <span className="eyebrow">Lernschritt</span>
                   </th>
-                  <th scope="col">Der Lernhelfer</th>
-                  <th scope="col">Die bewegliche Brücke</th>
-                  <th scope="col">Der Wächter</th>
+                  {CHALLENGES.map((c) => (
+                    <th key={c.titel} scope="col">
+                      {c.titel}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className={k.zeit}>Mo VM · 1</td>
-                  <td>Stolperjagd</td>
-                  <td>Kreuzungsjagd</td>
-                  <td>Wächterjagd</td>
-                </tr>
-                <tr>
-                  <td className={k.zeit}>Di VM · 3</td>
-                  <td className={k.takt}>Ideen schmieden</td>
-                  <td>Energie-Werkstatt</td>
-                  <td>Energie-Werkstatt</td>
-                </tr>
-                <tr>
-                  <td className={k.zeit}>Di NM · 4</td>
-                  <td className={k.takt}>Energie-Werkstatt</td>
-                  <td>Ideen schmieden</td>
-                  <td>Ideen schmieden</td>
-                </tr>
-                <tr>
-                  <td className={k.zeit}>Fr VM · 8</td>
-                  <td>Zeigen</td>
-                  <td>Zeigen</td>
-                  <td>Zeigen</td>
-                </tr>
+                {SCHRITTE_KURZ.map((s) => (
+                  <tr key={s.nr}>
+                    <td className={k.zeit}>
+                      {s.nr} · {s.name}
+                    </td>
+                    {CHALLENGES.map((c, i) => (
+                      <td key={c.titel}>{s.je[i]}</td>
+                    ))}
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
           <p style={{ fontSize: '.92rem', lineHeight: 1.55, marginTop: '.8rem', color: '#4a4d6b' }}>
-            Die beiden grün markierten Felder sind der einzige Unterschied: Beim Lernhelfer sind Schritt 3 und 4
-            vertauscht – zuerst Ideen, dann Bauteile. Das ist kein Sonderfall, sondern Absicht. Dadurch steht nie
-            die ganze Klasse gleichzeitig an der Energie-Werkstatt, und das Material reicht.
+            Eine Ausnahme gibt es: <strong>Die Kettenreaktion</strong> braucht die ganze Klasse, weil jede Gruppe
+            eine Station für die nächste baut.
           </p>
-          <p style={{ fontSize: '.92rem', lineHeight: 1.55, marginTop: '.6rem', color: '#4a4d6b' }}>
-            Eine Ausnahme gibt es: <strong>Die Kettenreaktion</strong> braucht die ganze Klasse, weil jede
-            Gruppe eine Station für die nächste baut.
-          </p>
-          <p style={{ marginTop: '.8rem' }}>
+          <p style={{ marginTop: '.9rem', display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
             <Link className={k.weiter} href="/woche">
-              → Die Woche, Halbtag für Halbtag
+              → Die acht Lernschritte im Einzelnen
             </Link>
+            {CHALLENGE_CARDS_URL && (
+              <a className={k.weiter} href={CHALLENGE_CARDS_URL} target="_blank" rel="noopener noreferrer">
+                → Die Challenge Cards ansehen
+              </a>
+            )}
           </p>
         </section>
 
-        {/* ---------- 7 Entscheidungshilfe ---------- */}
+        {/* ---------- 9 Erfolg und Einwände ---------- */}
         <div className={`${k.raster} ${k.rasterUnten}`} style={{ marginTop: '1.4rem' }}>
           <section className={k.kachel}>
-            <h2>Kommen Sie nicht weiter?</h2>
+            <h2>Häufige Fragen</h2>
 
             <div className={k.einwand}>
               <p className={k.einwandFrage}>
@@ -323,10 +365,9 @@ export default function Start() {
                 «Unsere Lehrpersonen können kein Making.»
               </p>
               <p className={k.einwandAntwort}>
-                Dafür ist das Material gebaut. Auf jeder Karte stehen der Auftrag, das Vorgehen in vier bis fünf
-                Schritten, ein Fertig-Kriterium, das die Kinder selbst prüfen können, und eine dreistufige Hilfe.
-                Die Lehrperson moderiert, sie unterrichtet nicht. Eine halbtägige Weiterbildung vor dem Einsatz
-                gehört dazu.
+                Dafür ist das Material gebaut. Auf jeder Karte stehen der Auftrag, das Vorgehen, ein
+                Fertig-Kriterium, das die Kinder selbst prüfen können, und eine dreistufige Hilfe. Die Lehrperson
+                moderiert, sie unterrichtet nicht. Eine halbtägige Weiterbildung vor dem Einsatz gehört dazu.
               </p>
             </div>
 
@@ -345,12 +386,12 @@ export default function Start() {
             <div className={k.einwand}>
               <p className={k.einwandFrage}>
                 <span className={k.nr}>3</span>
-                «Und wenn am Freitag nichts funktioniert?»
+                «Passt das in unseren Jahresplan?»
               </p>
               <p className={k.einwandAntwort}>
-                Dann ist die Woche trotzdem gelungen. Beurteilt wird nicht das Werkstück, sondern der Weg
-                dorthin: was beobachtet, entschieden, geändert und begründet wurde. Der Kompetenznachweis
-                entsteht aus der Lerndokumentation, nicht aus dem Prototyp.
+                Die acht Lernschritte füllen eine Schulwoche, wenn man sie am Stück durchführt. Sie lassen sich
+                aber ebenso über ein Semester verteilen – etwa als wöchentlicher Kurshalbtag. Die Abfolge bleibt
+                dieselbe, nur der Takt ändert sich.
               </p>
             </div>
           </section>
@@ -360,31 +401,32 @@ export default function Start() {
               <span className={`${k.symbol} ${k.symbolHell}`} aria-hidden="true">
                 ✓
               </span>
-              <h2>Fertig sind Sie, wenn</h2>
+              <h2>Wann ist Making ein Erfolg?</h2>
             </div>
-            <ul className={k.haken}>
-              <li>Sie wissen, welche der vier Challenges zu Ihrer Klasse passt.</li>
-              <li>Sie sieben Halbtage im Stundenplan gefunden haben.</li>
-              <li>Sie sagen können, was die Woche kostet und wer sie bezahlt.</li>
-              <li>Sie wissen, was Sie Ihrem Kollegium am Montag darauf erzählen.</li>
-            </ul>
-            <p style={{ fontSize: '.92rem', lineHeight: 1.5, marginTop: '.7rem', color: '#c6c8de' }}>
-              Zur Grössenordnung: vier Boxen zu je rund CHF 750 pro Materialsatz. Betriebs- und
-              Finanzierungsmodell sind offen – genau darüber möchten wir reden.
+            <p style={{ fontSize: '.96rem', lineHeight: 1.55 }}>
+              Mit Making ist es nie fertig. Es gibt keinen Zustand, in dem ein Projekt endgültig gelöst wäre –
+              jede Lösung lässt sich weiterdenken, und genau das ist erwünscht.
+            </p>
+            <p style={{ fontSize: '.96rem', lineHeight: 1.55, marginTop: '.7rem' }}>
+              Gelungen ist es dann, wenn eine <strong>fehlerfreundliche Lernumgebung</strong> entstanden ist: wo
+              ein Prototyp scheitern darf, weil das Scheitern den nächsten Schritt zeigt. Was dabei wächst, sind
+              überfachliche Kompetenzen – Problemlösen, Zusammenarbeit, Durchhaltevermögen, der Umgang mit
+              Fehlern.
             </p>
           </section>
         </div>
 
-        {/* ---------- Mieten und buchen ---------- */}
+        {/* ---------- 10 Mieten und buchen ---------- */}
         <section className={k.stoererZone} style={{ marginTop: '1.4rem' }}>
           <span className={k.stoererMarke} style={{ background: 'var(--gruen)' }}>
             Buchen
           </span>
           <div className={k.stoerer} style={{ background: 'var(--gruen)' }}>
-            <q style={{ quotes: 'none' }}>Boxen, Challenges und das ganze Setting lassen sich mieten.</q>
+            <q style={{ quotes: 'none' }}>Material, Aufgaben und Begleitung lassen sich mieten.</q>
             <p style={{ color: '#e8f6ef', marginTop: '.8rem', fontSize: '1rem', lineHeight: 1.55, maxWidth: '44em' }}>
-              Das Angebot läuft über den I+D Campus. Dort sind die Konditionen hinterlegt, und dort wird eine
-              Woche gebucht – für eine einzelne Klasse oder für eine ganze Projektwoche.
+              Das Angebot läuft über den I+D Campus. Dort sind die Konditionen hinterlegt, und dort wird gebucht –
+              für eine einzelne Klasse, eine Projektwoche oder einen Semesterkurs. Zur Grössenordnung: Ein
+              Materialsatz besteht aus vier Boxen zu je rund CHF 750.
             </p>
             <p style={{ marginTop: '1rem' }}>
               <a
@@ -399,12 +441,12 @@ export default function Start() {
           </div>
         </section>
 
-        {/* ---------- 8 Erst jetzt: Sidequests ---------- */}
+        {/* ---------- 11 Erst jetzt: Sidequests ---------- */}
         <section className={k.quests} id="ausprobieren">
           <p className={k.auftragLabel}>Erst lesen, dann ausprobieren</p>
           <h2>Jetzt sind Sie dran</h2>
           <p>
-            Sie wissen nun, wie die Woche aufgebaut ist. Ob das auch im Schulzimmer trägt, merkt man erst, wenn
+            Sie wissen nun, wie das Angebot aufgebaut ist. Ob das auch im Schulzimmer trägt, merkt man erst, wenn
             man es selbst versucht. Drei kurze Übungen – keine davon dauert länger als fünf Minuten.
           </p>
           <div className={k.questListe}>
@@ -412,16 +454,14 @@ export default function Start() {
               <span className={k.questFuer}>Für Lehrpersonen</span>
               <b>Die Moderationsfalle</b>
               <p>
-                Vierzehn Zeilen aus einem Mittwochnachmittag. Vier Sätze der Lehrperson nehmen der Gruppe die
-                Arbeit ab – finden Sie sie.
+                Vierzehn Zeilen aus einem Schulzimmer. Vier Sätze der Lehrperson nehmen der Gruppe die Arbeit ab
+                – finden Sie sie.
               </p>
             </Link>
             <Link className={k.quest} href="/wochenplan">
               <span className={k.questFuer}>Für die Planung</span>
               <b>Passt der Plan?</b>
-              <p>
-                Ein Wochenplan mit mehreren Challenges nebeneinander. An vier Stellen bricht die Abstimmung.
-              </p>
+              <p>Ein Ablaufplan mit mehreren Aufgaben nebeneinander. An vier Stellen bricht die Abstimmung.</p>
             </Link>
             <Link className={k.quest} href="/spiel">
               <span className={k.questFuer}>Zum Anschauen</span>
@@ -434,19 +474,19 @@ export default function Start() {
           </div>
         </section>
 
-        {/* ---------- 9 Offen ---------- */}
+        {/* ---------- 12 Offen ---------- */}
         <section className={k.offen}>
           <b>Offen geblieben</b>
           <p>
-            Das Betriebs- und Finanzierungsmodell ist nicht entschieden – Miete, Trägerschaft und Betreuung
-            stehen zur Diskussion. Ob Lasercutter, Tiefziehgerät und Lötstation zum Mietmaterial gehören,
-            entscheidet sich nach der ersten Testklasse. Diese Klasse gibt es noch nicht: Was hier steht,
+            Das Betriebs- und Finanzierungsmodell ist nicht abschliessend entschieden – Miete, Trägerschaft und
+            Betreuung stehen zur Diskussion. Ob Lasercutter, Tiefziehgerät und Lötstation zum Mietmaterial
+            gehören, entscheidet sich nach der ersten Testklasse. Diese Klasse gibt es noch nicht: Was hier steht,
             beschreibt, wie das Material gebaut ist, und ist kein Erfahrungsbericht.
           </p>
         </section>
 
         <p className={k.kartenfuss}>
-          <span>I+D Campus × PHTG · Mobiler MakerSpace · Projektkarte</span>
+          <span>I+D Campus × PHTG · Mobiler MakerSpace</span>
           <span>CC BY-SA 4.0 · Prototyp · Oktober 2026</span>
         </p>
       </div>

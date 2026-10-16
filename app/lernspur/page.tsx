@@ -267,7 +267,7 @@ export default function LernspurSeite() {
               → Die 24 Kompetenzen im Einzelnen
             </Link>
             <Link className={k.weiter} href="/woche">
-              → Die Woche, Halbtag für Halbtag
+              → Die Lernschritte, einer nach dem anderen
             </Link>
           </p>
         </section>

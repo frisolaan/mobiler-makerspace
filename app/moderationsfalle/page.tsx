@@ -38,7 +38,7 @@ export default function FallenSeite() {
           <p className={k.auftragLabel}>Ihr Auftrag jetzt</p>
           <p className={k.auftragSatz}>Finden Sie die Stellen, an denen die Lehrperson zu viel hilft.</p>
           <p className={k.auftragUnter}>
-            Auf der Wochenseite steht neben jedem Halbtag, was die Lehrperson tut und was sie unterlässt. Hier
+            Auf der Seite mit den Lernschritten steht neben jedem Schritt, was die Lehrperson tut und was sie unterlässt. Hier
             steht nichts dabei. Vier Sätze in dieser Szene nehmen der Gruppe die Arbeit ab – die übrigen sind
             richtig, auch wenn sie ähnlich klingen.
           </p>
@@ -104,7 +104,7 @@ export default function FallenSeite() {
             → Passt der Plan?
           </Link>
           <Link className={k.weiter} href="/woche">
-            → Zurück zur Woche
+            → Zurück zu den Lernschritten
           </Link>
           <Link className={k.weiter} href="/">
             → Zur Projektkarte

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: '%s · Mobiler MakerSpace',
   },
   description:
-    'Eine Making-Woche, die ins Klassenzimmer kommt: vier Boxen, ein Kartenset, sieben Halbtage. Ein Projekt der Pädagogischen Hochschule Thurgau.',
+    'Eine Making-Woche, die ins Klassenzimmer kommt: ein Materialsortiment mit vier Boxen, vier ausgearbeiteten Aufgaben und acht Lernschritten. Eine Kooperation des I+D Campus mit der Pädagogischen Hochschule Thurgau.',
 };
 
 export const viewport: Viewport = {

@@ -3,15 +3,15 @@ import Link from 'next/link';
 import k from '@/components/Kartenblatt.module.css';
 
 export const metadata: Metadata = {
-  title: 'Die Woche',
+  title: 'Die Lernschritte',
   description:
-    'Acht Halbtage, Schritt für Schritt – und was die Lehrperson dabei tut und was sie ausdrücklich nicht tut.',
+    'Acht Lernschritte, Schritt für Schritt – und was die Lehrperson dabei tut und was sie ausdrücklich nicht tut.',
 };
 
-const HALBTAGE = [
+const SCHRITTE = [
   {
     nr: 1,
-    tag: 'Montag · Vormittag',
+    takt: 'Rund ein Halbtag',
     name: 'Erfahren',
     text: 'Die Klasse geht auf die Jagd nach echten Problemen – Stolperstellen beim Lernen, Kreuzungen, die etwas Bewegliches verlangen, Momente, die jemand melden müsste. Gesammelt wird, nicht gelöst.',
     tut: 'Hält die Klasse beim Beobachten und lässt sammeln, ohne zu werten.',
@@ -19,7 +19,7 @@ const HALBTAGE = [
   },
   {
     nr: 2,
-    tag: 'Montag · Nachmittag',
+    takt: 'Rund ein Halbtag',
     name: 'Festlegen',
     text: 'Jede Gruppe wählt aus ihrer Sammlung ein Problem aus und schreibt auf, warum gerade dieses. Ab hier ist die Aufgabe der Gruppe festgelegt, nicht mehr die der Lehrperson.',
     tut: 'Besteht darauf, dass die Wahl begründet wird.',
@@ -27,7 +27,7 @@ const HALBTAGE = [
   },
   {
     nr: 3,
-    tag: 'Dienstag · Vormittag',
+    takt: 'Rund ein Halbtag',
     name: 'Entwerfen',
     text: 'Menge vor Qualität. Es werden so viele Lösungsideen erzeugt wie möglich, gezeichnet und an die Wand gehängt. Erst ganz am Schluss markiert die Gruppe drei Favoriten.',
     tut: 'Zählt die Ideen mit und hält die Bewertung bis zum Schluss zurück.',
@@ -35,15 +35,15 @@ const HALBTAGE = [
   },
   {
     nr: 4,
-    tag: 'Dienstag · Nachmittag',
+    takt: 'Rund ein Halbtag',
     name: 'Prüfen',
-    text: 'Die Energie-Werkstatt: Solarzelle, Windrad, Handkurbel und Speicher werden der Reihe nach ausprobiert und gemessen. Danach weiss die Gruppe, woher ihr Strom kommen kann – denn aus der Steckdose kommt er nicht.',
+    text: 'Werkstatt: Die Bauteile aus den Boxen werden der Reihe nach ausprobiert und gemessen – Motoren, Getriebe, Fühler, Signalgeber. Danach weiss die Gruppe aus eigener Erfahrung, was ihr Material kann, und muss es nicht raten.',
     tut: 'Stellt die Stationen bereit und lässt messen statt raten.',
-    tutNicht: 'Verrät nicht, welche Quelle am meisten hergibt.',
+    tutNicht: 'Verrät nicht, welches Bauteil am meisten hergibt.',
   },
   {
     nr: 5,
-    tag: 'Mittwoch · Vormittag',
+    takt: 'Rund ein Halbtag',
     name: 'Entscheiden',
     text: 'Aus drei Favoriten wird einer. Die Gruppe zeichnet ihn mit Massen – so gross, dass daraus gebaut werden kann, und so genau, dass zwei Kinder gleichzeitig daran arbeiten können.',
     tut: 'Verlangt Masse auf der Skizze, nicht nur eine hübsche Zeichnung.',
@@ -51,7 +51,7 @@ const HALBTAGE = [
   },
   {
     nr: 6,
-    tag: 'Mittwoch · Nachmittag + Donnerstag · Vormittag',
+    takt: 'Der längste Schritt – gut zwei Halbtage',
     name: 'Bauen',
     text: 'Die erste Fassung entsteht, arbeitsteilig. Vorher klärt die Gruppe, wo ihre Teile aufeinandertreffen – an diesen Stellen scheitern Prototypen, nicht in der Mitte eines Bauteils.',
     tut: 'Achtet darauf, dass alle bauen und die Schnittstellen vorher besprochen sind.',
@@ -59,7 +59,7 @@ const HALBTAGE = [
   },
   {
     nr: 7,
-    tag: 'Donnerstag · Nachmittag',
+    takt: 'Rund ein Halbtag',
     name: 'Testen',
     text: 'Getestet wird unter festen Bedingungen, und dann wird genau eine Sache geändert. Danach derselbe Test nochmal. Die Zahlen vorher und nachher stehen nebeneinander – was sie bedeuten, erklärt die Gruppe selbst.',
     tut: 'Besteht auf genau einer Änderung und auf Zahlen vorher und nachher.',
@@ -67,7 +67,7 @@ const HALBTAGE = [
   },
   {
     nr: 8,
-    tag: 'Freitag · Vormittag',
+    takt: 'Rund ein Halbtag',
     name: 'Zeigen',
     text: 'Vorgeführt wird unter denselben Bedingungen wie beim Test. Erzählt wird aber nicht das Produkt, sondern der Weg: was zuerst gedacht, was verworfen, was geändert wurde. Danach wird eingeräumt.',
     tut: 'Lässt den Entwicklungsweg erzählen statt das Ergebnis anpreisen.',
@@ -85,13 +85,16 @@ export default function WochenSeite() {
               8
             </div>
             <div style={{ minWidth: 0 }}>
-              <p className={k.marke}>Mobiler MakerSpace · die Woche</p>
-              <h1 className={k.titel}>Acht Halbtage, einer nach dem anderen</h1>
+              <p className={k.marke}>Mobiler MakerSpace · die Lernschritte</p>
+              <h1 className={k.titel}>Acht Lernschritte, einer nach dem anderen</h1>
+              <p className={k.untertitel}>
+                Als Projektwoche am Stück – oder über ein Semester verteilt
+              </p>
             </div>
           </div>
           <div className={k.kopfRechts}>
-            <span className={k.pille}>Für alle vier Challenges gleich</span>
-            <span className={k.zeile}>Montag bis Freitag · ein Schritt darf wegfallen</span>
+            <span className={k.pille}>Für alle vier Aufgaben gleich</span>
+            <span className={k.zeile}>Je rund ein Halbtag · die Reihenfolge bleibt</span>
           </div>
         </header>
 
@@ -99,21 +102,21 @@ export default function WochenSeite() {
           <p className={k.auftragLabel}>Worum es auf dieser Seite geht</p>
           <p className={k.auftragSatz}>Nicht was im Material steckt, sondern was im Schulzimmer passiert.</p>
           <p className={k.auftragUnter}>
-            Der Ablauf ist in allen vier Challenges derselbe – nur das Problem ist ein anderes. Neben jedem
-            Halbtag steht, was die Lehrperson tut und was sie ausdrücklich unterlässt. Das Unterlassen ist der
-            schwierigere Teil und der Grund, warum die Woche ohne Making-Vorwissen funktioniert.
+            Der Ablauf ist in allen vier Aufgaben derselbe – nur das Problem ist ein anderes. Neben jedem Schritt
+            steht, was die Lehrperson tut und was sie ausdrücklich unterlässt. Das Unterlassen ist der
+            schwierigere Teil und der Grund, warum die Lernschritte ohne Making-Vorwissen funktionieren.
           </p>
         </section>
 
         <div className={k.kette}>
-          {HALBTAGE.map((h) => (
+          {SCHRITTE.map((h) => (
             <article key={h.nr} className={k.halbtag}>
               <div className={k.htKopf}>
                 <div className="okt" style={{ width: '2.2rem', height: '2.2rem', fontSize: '1rem' }}>
                   {h.nr}
                 </div>
                 <div>
-                  <p className={k.htTag}>{h.tag}</p>
+                  <p className={k.htTag}>Lernschritt {h.nr} · {h.takt}</p>
                   <p className={k.htName}>{h.name}</p>
                 </div>
               </div>
@@ -127,31 +130,38 @@ export default function WochenSeite() {
         </div>
 
         <section className={`${k.kachel} ${k.kachelMint}`} style={{ marginTop: '.9rem' }}>
-          <h2>Sieben Halbtage, acht Schritte</h2>
+          <h2>Acht Schritte – der Takt ist frei</h2>
           <p style={{ fontSize: '.95rem', lineHeight: 1.55 }}>
-            Eine Schulwoche bietet in der Regel sieben nutzbare Halbtage. Die Differenz ist Absicht: Ein Schritt
-            kann weggelassen, zwei können zusammengelegt oder einer kann verkürzt werden. Welcher, entscheidet
-            die Lehrperson nach ihrer Klasse – und nicht das Material.
+            Die Schritte sind so bemessen, dass sie <strong>auf eine Schulwoche passen würden</strong>: Eine Woche
+            bietet in der Regel sieben nutzbare Halbtage, acht Schritte brauchen etwa neun – die Differenz ist
+            Absicht. Ein Schritt kann weggelassen, zwei können zusammengelegt oder einer kann verkürzt werden.
+            Welcher, entscheidet die Lehrperson nach ihrer Klasse und nicht das Material.
           </p>
           <p style={{ fontSize: '.95rem', lineHeight: 1.55, marginTop: '.7rem' }}>
-            Nach jedem Halbtag entsteht ein Eintrag in der Lerndokumentation, meist ein Foto und ein bis drei
-            Sätze. Deshalb ist die Dokumentation kein Zusatz am Schluss, sondern der rote Faden durch die Woche.
-            Am Freitag geht die Hardware zurück – die Lernspur bleibt bei den Kindern.
+            Genauso gut lassen sich die acht Schritte <strong>über ein Semester verteilen</strong> – etwa als
+            wöchentlicher Kurshalbtag oder als Wahlfach. Dann bleibt zwischen den Schritten Zeit zum Nachdenken,
+            und der Prototyp darf über Wochen wachsen. Die Reihenfolge bleibt in jedem Fall dieselbe; nur der
+            Takt ändert sich.
+          </p>
+          <p style={{ fontSize: '.95rem', lineHeight: 1.55, marginTop: '.7rem' }}>
+            Nach jedem Schritt entsteht ein Eintrag in der Lerndokumentation, meist ein Foto und ein bis drei
+            Sätze. Deshalb ist die Dokumentation kein Zusatz am Schluss, sondern der rote Faden durch das ganze
+            Vorhaben. Am Ende geht die Hardware zurück – die Lernspur bleibt bei den Kindern.
           </p>
         </section>
 
         <section className={`${k.kachel} ${k.kachelLavendel}`} style={{ marginTop: '.9rem' }}>
           <h2>Wenn Sie Zeit haben</h2>
           <p style={{ fontSize: '.95rem', lineHeight: 1.5 }}>
-            Die ✕-Spalte liest sich leicht. Im Schulzimmer ist sie der schwierigste Teil der Woche – und man
-            merkt es im Moment selbst nicht. Probieren Sie es an einer Szene aus: vierzehn Zeilen, vier Sätze
-            darin nehmen der Gruppe die Arbeit ab.
+            Die ✕-Spalte liest sich leicht. Im Schulzimmer ist sie der schwierigste Teil – und man merkt es im
+            Moment selbst nicht. Probieren Sie es an einer Szene aus: vierzehn Zeilen, vier Sätze darin nehmen der
+            Gruppe die Arbeit ab.
           </p>
           <Link className={k.weiter} href="/moderationsfalle">
             → Die Moderationsfalle
           </Link>
           <span className={k.weiterZusatz}>
-            Und wenn Sie wissen wollen, warum drei Challenges gleichzeitig in einer Klasse laufen können:{' '}
+            Und wenn Sie wissen wollen, wie mehrere Aufgaben gleichzeitig in einer Klasse laufen:{' '}
             <Link href="/wochenplan" style={{ fontWeight: 700 }}>
               Passt der Plan?
             </Link>
@@ -161,9 +171,10 @@ export default function WochenSeite() {
         <section className={k.offen}>
           <b>Ehrlich gesagt</b>
           <p>
-            Eine Testklasse hat diese Woche noch nicht durchlaufen. Was hier steht, beschreibt, wie das Material
-            gebaut ist und wofür jede Karte gemacht wurde – es ist kein Erfahrungsbericht. Sobald die erste Klasse
-            durch ist, steht an dieser Stelle, was tatsächlich passiert ist, auch dort, wo es anders kam.
+            Eine Testklasse hat diese Schritte noch nicht durchlaufen. Was hier steht, beschreibt, wie das
+            Material gebaut ist und wofür jede Karte gemacht wurde – es ist kein Erfahrungsbericht. Sobald die
+            erste Klasse durch ist, steht an dieser Stelle, was tatsächlich passiert ist, auch dort, wo es anders
+            kam.
           </p>
         </section>
 
@@ -174,7 +185,7 @@ export default function WochenSeite() {
         </p>
 
         <p className={k.kartenfuss}>
-          <span>I+D Campus × PHTG · Mobiler MakerSpace · Die Woche</span>
+          <span>I+D Campus × PHTG · Mobiler MakerSpace · Die Lernschritte</span>
           <span>CC BY-SA 4.0 · Prototyp · Oktober 2026</span>
         </p>
       </div>
